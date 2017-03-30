@@ -21,7 +21,7 @@
   </form>
 
   <div class="row">
-    <div ng-repeat="movie in movies track by $index | orderBy: '-upvotes'" class="col-12">
+    <div ng-repeat="movie in movies | orderBy: '-upvotes'" class="col-12">
       <div class="row no-gutters box">
         <div class="col-4 fill-height">
           <img src={{movie.url}} />

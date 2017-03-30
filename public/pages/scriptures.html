@@ -21,7 +21,7 @@
   </form>
 
   <div class="row">
-    <div ng-repeat="scripture in scriptures track by $index | orderBy: '-upvotes'" class="col-12">
+    <div ng-repeat="scripture in scriptures | orderBy: '-upvotes'" class="col-12">
       <div class="row no-gutters box">
         <div class="col-4 fill-height">
           <img src={{scripture.url}} />
@@ -36,7 +36,7 @@
             </div>
           </div>          
           <div class="row align-items-center box-body">
-            <div class="col-10">
+            <div class="col-10 offset-1">
               <em>"{{scripture.scripture}}"</em>
             </div>
           </div>

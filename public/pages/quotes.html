@@ -9,7 +9,7 @@
       <input class="form-control input-title" type="text" ng-model="quoteTitle" placeholder="Quote Title">
     </div>
     <div class="col-12">
-      <textarea class="form-control input-body" type="textarea" ng-model="quoteFavoriteLine" placeholder="Favorite Line"></textarea>
+      <textarea class="form-control input-body" type="textarea" ng-model="quoteFavoriteLine" placeholder="Favorite Quote"></textarea>
     </div>
     <div class="col-12">
       <input class="form-control author" type="textarea" ng-model="quoteAuthor" placeholder="Quote By">
@@ -24,7 +24,7 @@
   </form>
 
   <div class="row">
-    <div ng-repeat="quote in quotes track by $index | orderBy: '-upvotes'" class="col-12">
+    <div ng-repeat="quote in quotes | orderBy: '-upvotes'" class="col-12">
       <div class="row no-gutters box">
         <div class="col-4 fill-height">
           <img src={{quote.url}} />
@@ -39,7 +39,7 @@
             </div>
           </div>          
           <div class="row align-items-center box-body">
-            <div class="col-10">
+            <div class="col-10 offset-1">
               <em>"{{quote.favoriteLine}}"</em>
               <hr>
               <b>{{quote.author}}</b>
