@@ -1,17 +1,16 @@
 var mongoose = require('mongoose');
 
-var SpiritualSchema = new mongoose.Schema({
-  topic: 'spiritual',
+var ScriptureSchema = new mongoose.Schema({
   title: String,
   scripture: String,
-  image: String,
+  url: String,
   upvotes: { type: Number, default: 0 }
 });
 
-SpiritualSchema.methods.upvote = function(cb) {
+ScriptureSchema.methods.upvote = function(cb) {
   this.upvotes += 1;
   this.save(cb);
 };
 
 
-mongoose.model('Spiritual', SpiritualSchema);
+mongoose.model('Scripture', ScriptureSchema);

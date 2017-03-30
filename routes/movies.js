@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/movies');
-require('../models/Movies');
 var Movie = mongoose.model('Movie');
 
 router.get("/", function(req, res, next) {

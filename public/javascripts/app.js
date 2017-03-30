@@ -53,7 +53,7 @@ app.controller('moviesController', [
       // console.log($scope.movieTitle);
       // console.log($scope.movieFavoriteLine);
       // console.log($scope.movieUrl);
-      if($scope.movieTitle == undefined || $scope.movieFavoriteLine == undefined || $scope.movieUrl == undefined ) {
+      if($scope.movieTitle == undefined || $scope.movieFavoriteLine == undefined ) {
         return;
       }
 
@@ -106,11 +106,67 @@ app.controller('moviesController', [
   }
 ]);
 
-app.controller('flashcardsController', [
+app.controller('quotesController', [
   '$scope', '$http',
   function($scope, $http) {
 
-    $scope.flashcards = [];
+    $scope.quotes = [];
+
+    $scope.addQuote = function() {
+      // console.log($scope.quoteTitle);
+      // console.log($scope.quoteFavoriteLine);
+      // console.log($scope.quoteUrl);
+      if($scope.quoteFavoriteLine == undefined || $scope.quoteAuthor == undefined) {
+        return;
+      }
+
+      $scope.create({
+        title: $scope.quoteTitle,
+        favoriteLine: $scope.quoteFavoriteLine,
+        author: $scope.quoteAuthor,
+        url: $scope.quoteUrl,
+        upvotes: 0
+      });
+
+      $scope.quoteTitle = '';
+      $scope.quoteFavoriteLine = '';
+      $scope.quoteAutor = '';
+      $scope.quoteUrl = '';
+
+    };
+
+    $scope.incrementUpvotes = function(quote) {
+      $scope.upvote(quote);
+    };
+
+    $scope.getAll = function() {
+      return $http.get('/quotes').success(function(data) {
+        angular.copy(data, $scope.quotes);
+      });
+    };
+
+    $scope.create = function(quote) {
+      return $http.post('/quotes', quote).success(function(data) {
+        $scope.quotes.push(data);
+      });
+    };
+
+    $scope.upvote = function(quote) {
+      return $http.put('/quotes/' + quote._id + '/upvote')
+      .success(function(data){
+        quote.upvotes += 1;
+      })
+    };
+
+    $scope.delete = function(quote) {
+      $http.delete('/quotes/' + quote._id)
+      .success(function(data) {
+        console.log("successful delete");
+      });
+      $scope.getAll();
+    }
+    
+    $scope.getAll();
 
   }
 ]);
@@ -119,60 +175,67 @@ app.controller('flashcardsController', [
 
 
 
-// app.controller('MainController', [
-//   '$scope', '$http',
-//   function($scope, $http) {
+app.controller('scripturesController', [
+  '$scope', '$http',
+  function($scope, $http) {
 
-//     $scope.flashcards = [];
+    $scope.scriptures = [];
 
-//     $scope.addFlashcard = function() {
-//       console.log($scope.formContent);
-//       if($scope.formContent == undefined) {
-//         return;
-//       }
+    $scope.addScripture = function() {
+      // console.log($scope.scriptureTitle);
+      // console.log($scope.scriptureFavoriteLine);
+      // console.log($scope.scriptureUrl);
+      if($scope.scriptureFavoriteLine == undefined) {
+        return;
+      }
 
-//       $scope.create({
-//         title: $scope.formContent,
-//         upvotes: 0
-//       });
+      $scope.create({
+        title: $scope.scriptureTitle,
+        scripture: $scope.scriptureFavoriteLine,
+        url: $scope.scriptureUrl,
+        upvotes: 0
+      });
 
-//       $scope.formContent = '';
+      $scope.scriptureTitle = '';
+      $scope.scriptureFavoriteLine = '';
+      $scope.scriptureUrl = '';
 
-//     };
+    };
 
-//     $scope.incrementUpvotes = function(comment) {
-//       $scope.upvote(comment);
-//     };
+    $scope.incrementUpvotes = function(scripture) {
+      $scope.upvote(scripture);
+    };
 
-//     $scope.getAll = function(topic) {
-//       return $http.get('/flashcards/' + topic).success(function(data) {
-//         angular.copy(data, $scope.flashcards);
-//       });
-//     };
+    $scope.getAll = function() {
+      return $http.get('/scriptures').success(function(data) {
+        angular.copy(data, $scope.scriptures);
+      });
+    };
 
-//     $scope.create = function(flashcard) {
-//       return $http.post('/comments', comment).success(function(data) {
-//         $scope.flashcards.push(data);
-//       });
-//     };
+    $scope.create = function(scripture) {
+      return $http.post('/scriptures', scripture).success(function(data) {
+        $scope.scriptures.push(data);
+      });
+    };
 
-//     $scope.upvote = function(comment) {
-//       return $http.put('/comments/' + comment._id + '/upvote')
-//       .success(function(data){
-//         comment.upvotes += 1;
-//       })
-//     };
+    $scope.upvote = function(scripture) {
+      return $http.put('/scriptures/' + scripture._id + '/upvote')
+      .success(function(data){
+        scripture.upvotes += 1;
+      })
+    };
 
-//     $scope.delete = function(comment) {
-//       $http.delete('/comments/' + comment._id)
-//       .success(function(data) {
-
-//       });
-//       $scope.getAll();
-//     }
+    $scope.delete = function(scripture) {
+      $http.delete('/scriptures/' + scripture._id)
+      .success(function(data) {
+        console.log("successful delete");
+      });
+      $scope.getAll();
+    }
     
-//     $scope.getAll();
+    $scope.getAll();
 
-//   }
-// ]);
+  }
+]);
+
 

@@ -5,6 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+require('./models/Movies');
+require('./models/Quotes');
+require('./models/Scriptures');
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/favorites');
+
 var app = express();
 
 // view engine setup
@@ -26,8 +33,12 @@ app.use("/images",  express.static(__dirname + '/public/images'));
 
 var index = require('./routes/index');
 var movies = require('./routes/movies');
+var quotes = require('./routes/quotes');
+var scriptures = require('./routes/scriptures');
 app.use('/', index);
 app.use('/movies', movies);
+app.use('/quotes', quotes);
+app.use('/scriptures', scriptures);
 
 
 app.all('/favorites/*', function(req, res, next) {

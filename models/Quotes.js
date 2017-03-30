@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
 var QuoteSchema = new mongoose.Schema({
-  topic: 'quote',
   title: String,
-  quote: String,
-  image: String,
+  favoriteLine: String,
+  author: String,
+  url: String,
   upvotes: { type: Number, default: 0 }
 });
 

@@ -21,27 +21,33 @@
   </form>
 
   <div class="row">
-    <div ng-repeat="movie in movies track by $index" class="col-10 offset-1">
-      <div class="row box">
-        <div class="col-3 fill-height">
+    <div ng-repeat="movie in movies track by $index | orderBy: '-upvotes'" class="col-12">
+      <div class="row no-gutters box">
+        <div class="col-4 fill-height">
           <img src={{movie.url}} />
         </div>
         <div class="col-8 fill-height">
           <div class="row box-row-title">
-            <div class="col-12 box-title">
+            <div class="col-10 box-title">
               {{movie.title}}
+            </div>
+            <div class="col-2 delete-button">
+              <div class="btn btn-danger" ng-click="delete(movie)">X</div>
             </div>
           </div>          
           <div class="row align-items-center box-body">
-            <div class="col-12">
+            <div class="col-10">
               <em>"{{movie.favoriteLine}}"</em>
             </div>
           </div>
+          <div class="row box-favorites">
+            <div class="col-4 favorites-title"><b>Favorites</b></div>
+            <div class="col-4 favorites-title">{{movie.upvotes}}</div>
+            <div class="col-4">
+              <i class="fa fa-star" aria-hidden="true" ng-click="incrementUpvotes(movie)"></i>
+            </div>
+          </div>
         </div>
-        <div class="col-1 btn btn-danger delete-button" ng-click="delete(movie)">X</div>
-
-        <div class="col-2 glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(movie)"></div>
-        <div class="col-2 glyphicon glyphicon-remove" ng-click="delete(movie)"></div>
       </div>
     </div>
   </div>

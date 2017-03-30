@@ -1,47 +1,58 @@
 
 
-<div class="container" ng-controller="moviesController">
+<div class="container" ng-controller="quotesController">
 
-  <!-- Add a Movie Form -->
-  <form class="row form-group" ng-submit="addMovie()">
+  <!-- Add a Quote Form -->
+  <form class="row form-group" ng-submit="addQuote()">
 
     <div class="col-12">
-      <input class="form-control input-title" type="text" ng-model="movieTitle" placeholder="Movie Title">
+      <input class="form-control input-title" type="text" ng-model="quoteTitle" placeholder="Quote Title">
     </div>
     <div class="col-12">
-      <textarea class="form-control input-body" type="textarea" ng-model="movieFavoriteLine" placeholder="Favorite Line"></textarea>
+      <textarea class="form-control input-body" type="textarea" ng-model="quoteFavoriteLine" placeholder="Favorite Line"></textarea>
     </div>
     <div class="col-12">
-      <input class="form-control input-url" type="textarea" ng-model="movieUrl" placeholder="Movie Image Url">
+      <input class="form-control author" type="textarea" ng-model="quoteAuthor" placeholder="Quote By">
     </div>
     <div class="col-12">
-      <button class="btn btn-success fill-width" type="submit">Add Movie</button>
+      <input class="form-control input-url" type="textarea" ng-model="quoteUrl" placeholder="Quote Image Url">
+    </div>
+    <div class="col-12">
+      <button class="btn btn-success fill-width" type="submit">Add Quote</button>
     </div>
 
   </form>
 
   <div class="row">
-    <div ng-repeat="movie in movies track by $index" class="col-10 offset-1">
-      <div class="row box">
-        <div class="col-3 fill-height">
-          <img src={{movie.url}} />
+    <div ng-repeat="quote in quotes track by $index | orderBy: '-upvotes'" class="col-12">
+      <div class="row no-gutters box">
+        <div class="col-4 fill-height">
+          <img src={{quote.url}} />
         </div>
         <div class="col-8 fill-height">
           <div class="row box-row-title">
-            <div class="col-12 box-title">
-              {{movie.title}}
+            <div class="col-10 box-title">
+              {{quote.title}}
+            </div>
+            <div class="col-2 delete-button">
+              <div class="btn btn-danger" ng-click="delete(quote)">X</div>
             </div>
           </div>          
           <div class="row align-items-center box-body">
-            <div class="col-12">
-              <em>"{{movie.favoriteLine}}"</em>
+            <div class="col-10">
+              <em>"{{quote.favoriteLine}}"</em>
+              <hr>
+              <b>{{quote.author}}</b>
+            </div>
+          </div>
+          <div class="row box-favorites">
+            <div class="col-4 favorites-title"><b>Favorites</b></div>
+            <div class="col-4 favorites-title">{{quote.upvotes}}</div>
+            <div class="col-4">
+              <i class="fa fa-star" aria-hidden="true" ng-click="incrementUpvotes(quote)"></i>
             </div>
           </div>
         </div>
-        <div class="col-1 btn btn-danger delete-button" ng-click="delete(movie)">X</div>
-
-        <div class="col-2 glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(movie)"></div>
-        <div class="col-2 glyphicon glyphicon-remove" ng-click="delete(movie)"></div>
       </div>
     </div>
   </div>

@@ -5,11 +5,13 @@ a {
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('/images/sakura.png');
 }
 
 img {
   height: 100%;
-  width: 200px;
+  width: 100%;
+  border-radius: 5px;
 }
 
 img:before {
@@ -17,7 +19,7 @@ img:before {
     display: block;
     position: absolute;
     height: 100%;
-    width: 200px;
+    width: 100%;
     background-image: url(/images/placeholder.jpg);
     background-position: center;
     border-radius: 5px;
@@ -28,28 +30,49 @@ input {
 }
 
 .box {
-  height: 200px;
+  height: 300px;
   width: 100%;
+  padding:0;
 
   border-radius: 5px;
+  border: solid black;
 
   margin: 10px 0;
 
-  background-color: #EFEF14;
+  background-color: #FFF;
 }
 
 .box-body {
-  height: 162px; 
+  height: 70%; 
   text-align: center;
 }
 
+.box-favorites {
+  text-align: center;
+  height: 15%;
+  font-size: 2em;
+}
+
+.box-favorites .col-4 {
+  margin: auto auto;
+}
+
+.box-favorites .fa {
+  text-align: center;
+  color: blue;
+}
+
 .box-row-title {
-  height:38px; 
   text-align: center;
 }
 
 .box-title {
+  font-size: 3em;
   margin: auto auto;
+}
+
+.btn-danger {
+
 }
 
 .btn:hover {
@@ -57,7 +80,11 @@ input {
 }
 
 .delete-button {
-  height: 38px;
+  text-align: right;
+} 
+
+.favorites-title {
+  margin: auto auto;
 }
 
 .form-group {
@@ -70,6 +97,10 @@ input {
 
 .fill-width {
   width: 100%;
+}
+
+.fa:hover {
+  cursor: pointer;
 }
 
 .input-title {
