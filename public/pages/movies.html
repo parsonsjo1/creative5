@@ -1,0 +1,34 @@
+
+
+<div class="container" ng-controller="moviesController">
+
+  <!-- Add a Movie Form -->
+  <form class="row form-group" ng-submit="addMovie()">
+
+    <div class="col-12">
+      <input class="form-control" type="text" ng-model="formContent" placeholder="Movie Title">
+    </div>
+    <div class="col-12">
+      <input class="form-control" type="textarea" ng-model="formContent" placeholder="Favorite Line">
+    </div>
+    <div class="col-12">
+      <button class="btn btn-success fill-width" type="submit">Add Movie</button>
+    </div>
+
+  </form>
+
+  <div class="row">
+    <div ng-repeat="movie in movies" class="col-10 col-offset-1">
+      <div class="row">
+        <div class="col-8" style="text-align: left;">
+          {{movie.title}} - upvotes: {{movie.upvotes}}
+        </div>
+        <div class="col-2 glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(movie)"></div>
+        <div class="col-2 glyphicon glyphicon-remove" ng-click="delete(movie)"></div>
+      </div>
+      <hr>
+    </div>
+  </div>
+
+</div>
+

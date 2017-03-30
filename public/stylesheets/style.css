@@ -1,0 +1,20 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.navbar {
+  background-color: black;
+}
+
+a {
+  color: white;
+}
+
+.form-group {
+  margin-top: 25px;
+}
+
+.fill-width {
+  width: 100%;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="flashcardsApp">
+  <head>
+    <meta charset="utf-8">
+
+    <!-- Set a base relative link -->
+    <base href="/topics">
+
+    <title>Favorite Things</title>
+
+    <!-- Bootstrap CSS Framework -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+
+    <!-- Custom Javascript -->
+    <script src="javascripts/app.js"></script>
+
+    <!-- Custom Style -->
+    <link href="stylesheets/style.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar container-fluid">
+      <div class="row no-gutters">
+        <div class="col-3">
+          <a class="navbar-brand" href="#">Favorites</a>
+        </div>
+        <div class="col-3">
+          <a class="nav-link" href="#movies">Movies</a>
+        </div>
+        <div class="col-3">
+          <a class="nav-link" href="#quotes">Quotes</a>
+        </div>
+        <div class="col-3">
+          <a class="nav-link" href="#scriptures">Scriptures</a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="main">
+      <!-- Angular Routing will inject views here -->
+      <div ng-view></div>
+    </div>
+
+    <!-- Bootstrap -->
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+
+</html>
