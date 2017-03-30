@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/movies');
+require('../models/Movies');
 var Movie = mongoose.model('Movie');
 
-router.get("/movies", function(req, res, next) {
-  Movie.find(function(err, comments) {
+router.get("/", function(req, res, next) {
+  Movie.find(function(err, movies) {
     if(err) {
       return next(err);
     }
@@ -12,11 +14,11 @@ router.get("/movies", function(req, res, next) {
   });
 });
 
-router.get("movies/:movie", function(req, res) {
+router.get("/:movie", function(req, res) {
   res.json(req.movie);
 });
 
-router.post("/movies", function(req,res,next) {
+router.post("/", function(req,res,next) {
   var movie = new Movie(req.body);
   movie.save(function(err, movie) {
     if(err) {
@@ -26,7 +28,7 @@ router.post("/movies", function(req,res,next) {
   });
 });
 
-router.put('/movies/:movie/upvote', function(req, res, next) {
+router.put('/:movie/upvote', function(req, res, next) {
   req.movie.upvote(function(err, movie) {
     if(err) {
       return next(err);
@@ -35,7 +37,7 @@ router.put('/movies/:movie/upvote', function(req, res, next) {
   });
 });
 
-router.delete('/movies/:movie', function(req,res) {
+router.delete('/:movie', function(req,res) {
   req.movie.remove();
   res.json(req.movie);
 });

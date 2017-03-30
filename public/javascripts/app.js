@@ -1,31 +1,33 @@
-var app = angular.module('flashcardsApp',['ngRoute']);
+var app = angular.module('favoritesApp',['ngRoute']);
 
 app.config(function($routeProvider, $locationProvider) {
   $routeProvider
 
   // Route for the home page
-  .when('/', {
+  .when('/favorites/home', {
     templateUrl: 'pages/home.html',
     controller: 'mainController' 
   })
 
   // Route for the movies page
-  .when('/movies', {
+  .when('/favorites/movies', {
     templateUrl: 'pages/movies.html',
     controller: 'moviesController' 
   })
 
   // Route for the quotes page
-  .when('/quotes', {
+  .when('/favorites/quotes', {
     templateUrl: 'pages/quotes.html',
     controller: 'quotesController' 
   })
 
-  // Route for the spirituals page
-  .when('/spirituals', {
-    templateUrl: 'pages/spirituals.html',
-    controller: 'spiritualsController' 
+  // Route for the scriptures page
+  .when('/favorites/scriptures', {
+    templateUrl: 'pages/scriptures.html',
+    controller: 'scripturesController' 
   })  
+
+  .otherwise({ redirectTo: '/favorites/home' });
 
   // Using for history and pretty urls
   $locationProvider.html5Mode(true);
@@ -47,19 +49,24 @@ app.controller('moviesController', [
 
     $scope.movies = [];
 
-    $scope.addMovies = function() {
-      console.log($scope.formContent);
-      if($scope.formContent == undefined) {
+    $scope.addMovie = function() {
+      // console.log($scope.movieTitle);
+      // console.log($scope.movieFavoriteLine);
+      // console.log($scope.movieUrl);
+      if($scope.movieTitle == undefined || $scope.movieFavoriteLine == undefined || $scope.movieUrl == undefined ) {
         return;
       }
 
       $scope.create({
-        title: $scope.formContent,
-        body: $scope.formContent,
+        title: $scope.movieTitle,
+        favoriteLine: $scope.movieFavoriteLine,
+        url: $scope.movieUrl,
         upvotes: 0
       });
 
-      $scope.formContent = '';
+      $scope.movieTitle = '';
+      $scope.movieFavoriteLine = '';
+      $scope.movieUrl = '';
 
     };
 
@@ -67,8 +74,8 @@ app.controller('moviesController', [
       $scope.upvote(movie);
     };
 
-    $scope.getAll = function(movie) {
-      return $http.get('/movies/').success(function(data) {
+    $scope.getAll = function() {
+      return $http.get('/movies').success(function(data) {
         angular.copy(data, $scope.movies);
       });
     };
@@ -79,7 +86,7 @@ app.controller('moviesController', [
       });
     };
 
-    $scope.upvote = function(comment) {
+    $scope.upvote = function(movie) {
       return $http.put('/movies/' + movie._id + '/upvote')
       .success(function(data){
         movie.upvotes += 1;
@@ -87,9 +94,9 @@ app.controller('moviesController', [
     };
 
     $scope.delete = function(movie) {
-      $http.delete('/movies/' + comment._id)
+      $http.delete('/movies/' + movie._id)
       .success(function(data) {
-
+        console.log("successful delete");
       });
       $scope.getAll();
     }

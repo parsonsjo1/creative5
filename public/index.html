@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html ng-app="flashcardsApp">
+<html ng-app="favoritesApp">
   <head>
     <meta charset="utf-8">
 
     <!-- Set a base relative link -->
-    <base href="/topics">
+    <base href="/">
 
     <title>Favorite Things</title>
 
@@ -16,10 +16,10 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
 
     <!-- Custom Javascript -->
-    <script src="javascripts/app.js"></script>
+    <script src="/scripts/app.js"></script>
 
     <!-- Custom Style -->
-    <link href="stylesheets/style.css" rel="stylesheet">
+    <link href="/styles/style.css" rel="stylesheet">
 
   </head>
 
@@ -29,16 +29,16 @@
     <nav class="navbar container-fluid">
       <div class="row no-gutters">
         <div class="col-3">
-          <a class="navbar-brand" href="#">Favorites</a>
+          <a class="navbar-brand" href="#favorites/home">Favorites</a>
         </div>
         <div class="col-3">
-          <a class="nav-link" href="#movies">Movies</a>
+          <a class="nav-link" href="#favorites/movies">Movies</a>
         </div>
         <div class="col-3">
-          <a class="nav-link" href="#quotes">Quotes</a>
+          <a class="nav-link" href="#favorites/quotes">Quotes</a>
         </div>
         <div class="col-3">
-          <a class="nav-link" href="#scriptures">Scriptures</a>
+          <a class="nav-link" href="#favorites/scriptures">Scriptures</a>
         </div>
       </div>
     </nav>

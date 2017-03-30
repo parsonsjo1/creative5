@@ -1,32 +1,48 @@
 
 
-<div class="container" ng-controller="scripturesController">
+<div class="container" ng-controller="moviesController">
 
-  <!-- Add a Scripture Form -->
-  <form class="row form-group" ng-submit="addScripture()">
+  <!-- Add a Movie Form -->
+  <form class="row form-group" ng-submit="addMovie()">
 
     <div class="col-12">
-      <input class="form-control" type="text" ng-model="formContent" placeholder="Scripture Title">
+      <input class="form-control input-title" type="text" ng-model="movieTitle" placeholder="Movie Title">
     </div>
     <div class="col-12">
-      <input class="form-control" type="textarea" ng-model="formContent" placeholder="Favorite Line">
+      <textarea class="form-control input-body" type="textarea" ng-model="movieFavoriteLine" placeholder="Favorite Line"></textarea>
     </div>
     <div class="col-12">
-      <button class="btn btn-success fill-width" type="submit">Add Scripture</button>
+      <input class="form-control input-url" type="textarea" ng-model="movieUrl" placeholder="Movie Image Url">
+    </div>
+    <div class="col-12">
+      <button class="btn btn-success fill-width" type="submit">Add Movie</button>
     </div>
 
   </form>
 
   <div class="row">
-    <div ng-repeat="scripture in scriptures" class="col-10 offset-1">
-      <div class="row">
-        <div class="col-8" style="text-align: left;">
-          {{scripture.title}} - upvotes: {{scripture.upvotes}}
+    <div ng-repeat="movie in movies track by $index" class="col-10 offset-1">
+      <div class="row box">
+        <div class="col-3 fill-height">
+          <img src={{movie.url}} />
         </div>
-        <div class="col-2 glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(scripture)"></div>
-        <div class="col-2 glyphicon glyphicon-remove" ng-click="delete(scripture)"></div>
+        <div class="col-8 fill-height">
+          <div class="row box-row-title">
+            <div class="col-12 box-title">
+              {{movie.title}}
+            </div>
+          </div>          
+          <div class="row align-items-center box-body">
+            <div class="col-12">
+              <em>"{{movie.favoriteLine}}"</em>
+            </div>
+          </div>
+        </div>
+        <div class="col-1 btn btn-danger delete-button" ng-click="delete(movie)">X</div>
+
+        <div class="col-2 glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(movie)"></div>
+        <div class="col-2 glyphicon glyphicon-remove" ng-click="delete(movie)"></div>
       </div>
-      <hr>
     </div>
   </div>
 

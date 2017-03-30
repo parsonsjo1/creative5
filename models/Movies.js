@@ -1,10 +1,9 @@
 var mongoose = require('mongoose');
 
 var MovieSchema = new mongoose.Schema({
-  topic: String,
   title: String,
-  body: String,
-  image: String,
+  favoriteLine: String,
+  url: String,
   upvotes: { type: Number, default: 0 }
 });
 

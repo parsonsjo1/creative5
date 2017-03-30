@@ -1,20 +1,89 @@
+a {
+  color: white;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-.navbar {
-  background-color: black;
+img {
+  height: 100%;
+  width: 200px;
 }
 
-a {
-  color: white;
+img:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 200px;
+    background-image: url(/images/placeholder.jpg);
+    background-position: center;
+    border-radius: 5px;
+}
+
+input {
+  margin: 10px 0; 
+}
+
+.box {
+  height: 200px;
+  width: 100%;
+
+  border-radius: 5px;
+
+  margin: 10px 0;
+
+  background-color: #EFEF14;
+}
+
+.box-body {
+  height: 162px; 
+  text-align: center;
+}
+
+.box-row-title {
+  height:38px; 
+  text-align: center;
+}
+
+.box-title {
+  margin: auto auto;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.delete-button {
+  height: 38px;
 }
 
 .form-group {
   margin-top: 25px;
 }
 
+.fill-height {
+  height: 100%;
+}
+
 .fill-width {
   width: 100%;
+}
+
+.input-title {
+
+}
+
+.input-body {
+  height:75px;
+}
+
+.input-url {
+
+}
+
+.navbar {
+  background-color: black;
 }

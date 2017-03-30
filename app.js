@@ -4,13 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/movies');
-require('./models/Movies');
-
-var index = require('./routes/index');
-var movies = require('./routes/movies');
-var users = require('./routes/users');
 
 var app = express();
 
@@ -25,10 +18,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use("/styles",  express.static(__dirname + '/public/stylesheets'));
+app.use("/scripts", express.static(__dirname + '/public/javascripts'));
+app.use("/images",  express.static(__dirname + '/public/images'));
+// app.use('/pages', express.static(__dirname + '/public/pages'));
 
+
+var index = require('./routes/index');
+var movies = require('./routes/movies');
 app.use('/', index);
 app.use('/movies', movies);
-app.use('/users', users);
+
+
+app.all('/favorites/*', function(req, res, next) {
+    // Just send the index.html for other files to support HTML5Mode
+    res.sendFile('index.html', { root: __dirname + '/public' });
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

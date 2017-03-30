@@ -9,7 +9,7 @@
 6 silly lifecycle 5@0.0.0~prestart: no script for prestart, continuing
 7 info lifecycle 5@0.0.0~start: 5@0.0.0
 8 verbose lifecycle 5@0.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle 5@0.0.0~start: PATH: /home/joshua/.nvm/versions/node/v7.2.0/lib/node_modules/npm/bin/node-gyp-bin:/media/joshua/DATA/Dropbox/BYU/Winter2017/web_201R/creative/5/node_modules/.bin:/home/joshua/.nvm/versions/node/v7.2.0/bin:/home/joshua/.rvm/gems/ruby-2.3.0/bin:/home/joshua/.rvm/gems/ruby-2.3.0@global/bin:/home/joshua/.rvm/rubies/ruby-2.3.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/joshua/.rvm/bin:/snap/bin:/home/joshua/.rvm/bin:/home/joshua/.rvm/bin
+9 verbose lifecycle 5@0.0.0~start: PATH: /home/joshua/.nvm/versions/node/v7.2.0/lib/node_modules/npm/bin/node-gyp-bin:/media/joshua/DATA/Dropbox/BYU/Winter2017/web_201R/creative/5/node_modules/.bin:/home/joshua/.nvm/versions/node/v7.2.0/bin:/home/joshua/.rvm/gems/ruby-2.3.0/bin:/home/joshua/.rvm/gems/ruby-2.3.0@global/bin:/home/joshua/.rvm/rubies/ruby-2.3.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/joshua/.rvm/bin:/snap/bin:/home/joshua/.rvm/bin:/home/joshua/.rvm/bin:/snap/bin:/home/joshua/.rvm/bin:/home/joshua/.rvm/bin
 10 verbose lifecycle 5@0.0.0~start: CWD: /media/joshua/DATA/Dropbox/BYU/Winter2017/web_201R/creative/5
 11 silly lifecycle 5@0.0.0~start: Args: [ '-c', 'node ./bin/www' ]
 12 silly lifecycle 5@0.0.0~start: Returned: code: 1  signal: null
@@ -26,7 +26,7 @@
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
 15 verbose pkgid 5@0.0.0
 16 verbose cwd /media/joshua/DATA/Dropbox/BYU/Winter2017/web_201R/creative/5
-17 error Linux 4.4.0-70-generic
+17 error Linux 4.4.0-71-generic
 18 error argv "/home/joshua/.nvm/versions/node/v7.2.0/bin/node" "/home/joshua/.nvm/versions/node/v7.2.0/bin/npm" "start"
 19 error node v7.2.0
 20 error npm  v3.10.9
